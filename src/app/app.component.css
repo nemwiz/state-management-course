@@ -1,0 +1,17 @@
+.main-container {
+  display: grid;
+  grid-template-columns: 1fr 3fr;
+  height: 100vw;
+}
+
+.main-container sidebar-navigation {
+  background-color: #35383b;
+  color: white;
+}
+
+.products-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 15px;
+  padding: 20px;
+}

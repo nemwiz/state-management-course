@@ -1,7 +1,7 @@
 .main-container {
   display: grid;
   grid-template-columns: 1fr 8fr;
-  height: 100vw;
+  height: 95vh;
 }
 
 .main-container app-sidebar-navigation {

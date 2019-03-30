@@ -2,7 +2,51 @@ header {
   display: flex;
   align-items: center;
   justify-content: center;
-  height: 5vh;
+  height: 8vh;
   background-color: #282b2e;
+}
+
+.header-title {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
   color: #ffffff;
+  font-size: 1.25em;
+  font-weight: bold;
+}
+
+.icons-container {
+  display: flex;
+  flex-grow: 1;
+  justify-content: flex-end;
+  padding-right: 20px;
+}
+
+.icon-and-notification-container {
+  position: relative;
+}
+
+.shopping-cart-icon {
+  height: 25px;
+  align-self: center;
+  margin-top: 5px;
+  margin-right: 10px;
+}
+
+.user-icon {
+  height: 30px;
+}
+
+.notifications {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 25px;
+  width: 25px;
+  background-color: orangered;
+  color: white;
+  border-radius: 12px;
+  position: absolute;
+  top: -15px;
+  right: -3px;
 }

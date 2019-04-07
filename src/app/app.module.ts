@@ -6,16 +6,16 @@ import { ProductComponent } from 'src/app/products/product/product.component';
 import { ProductsComponent } from 'src/app/products/products.component';
 import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
-import { ShoppingCartComponent } from './shooping-cart/shooping-cart.component';
 import { SidebarNavigationComponent } from './sidebar-navigation/sidebar-navigation.component';
 import {ProductService} from './services/product.service';
+import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 
 
 const routes: Routes = [
   { path: 'products', component: ProductsComponent },
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'products/:id', component: ProductDetailsComponent },
-  { path: 'cart', component: ShoppingCartComponent },
+  { path: 'shopping-cart', component: ShoppingCartComponent },
 ];
 
 @NgModule({

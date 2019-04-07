@@ -1,10 +1,12 @@
 <header>
   <div class="header-title">Frontend tech store</div>
   <div class="icons-container">
-    <div class="icon-and-notification-container">
-      <img class="shopping-cart-icon" src="../../assets/shopping-cart.svg" alt="user-icon">
-      <div class="notifications" *ngIf="shoppingCartItems !== 0">{{shoppingCartItems}}</div>
-    </div>
+    <a routerLink="/shopping-cart">
+      <div class="icon-and-notification-container">
+        <img class="shopping-cart-icon" src="../../assets/shopping-cart.svg" alt="user-icon">
+        <div class="notifications" *ngIf="shoppingCartItems !== 0">{{shoppingCartItems}}</div>
+      </div>
+    </a>
     <div class="icon-and-notification-container">
       <img class="user-icon" src="../../assets/user-icon.svg" alt="user-icon">
       <div class="notifications" *ngIf="userNotifications !== 0">{{userNotifications}}</div>

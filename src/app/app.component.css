@@ -6,6 +6,11 @@
   height: 95vh;
 }
 
+.content {
+  display: flex;
+  justify-content: center;
+}
+
 .main-container sidebar-navigation {
   background-color: #282b2e;
 }

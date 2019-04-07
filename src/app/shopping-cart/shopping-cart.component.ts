@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-shooping-cart',
-  templateUrl: './shooping-cart.component.html',
-  styleUrls: ['./shooping-cart.component.css']
+  selector: 'shopping-cart',
+  templateUrl: './shopping-cart.component.html',
+  styleUrls: ['./shopping-cart.component.css']
 })
 export class ShoppingCartComponent implements OnInit {
 

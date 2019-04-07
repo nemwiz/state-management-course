@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { ShoppingCartComponent } from './shooping-cart/shooping-cart.component';
 import { SidebarNavigationComponent } from './sidebar-navigation/sidebar-navigation.component';
+import {ProductService} from './services/product.service';
 
 
 const routes: Routes = [
@@ -31,7 +32,7 @@ const routes: Routes = [
     BrowserModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [ProductService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

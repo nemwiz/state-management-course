@@ -1,20 +1,15 @@
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import {Component, Input, OnInit} from '@angular/core';
+import {Product} from '../../models/product';
 
 @Component({
-  selector: 'app-product',
+  selector: 'product',
   templateUrl: './product.component.html',
   styleUrls: ['./product.component.css']
 })
 export class ProductComponent implements OnInit {
-  productId = 1; // TODO - Mock data
 
-  constructor(private router: Router) { }
+  @Input() product: Product;
 
-  ngOnInit() {
-  }
-
-  navigateToProductDetails() {
-    this.router.navigateByUrl(`products/${this.productId}`);
+  ngOnInit(): void {
   }
 }

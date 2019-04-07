@@ -1,4 +1,10 @@
-<div class="product" (click)="navigateToProductDetails()">
-  <div class="name">Awesome shoes</div>
-  <div class="description">Best shoes on the market</div>
-</div>
+<figure class="product blue">
+  <img src="{{product.imgUrl}}" alt="sample71"/>
+  <div class="price">{{product.price}}$</div>
+  <figcaption>
+    <h3>{{product.name}}</h3>
+    <p>
+      {{product.description}}
+    </p><a href="#">Add to Cart</a>
+  </figcaption>
+</figure>

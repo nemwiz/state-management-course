@@ -3,4 +3,58 @@
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  padding: 30px;
 }
+
+.links-container {
+  font-family: 'Muli', Arial, sans-serif;
+  font-size: 18px;
+  letter-spacing: 1.5px;
+  line-height: 1em;
+  text-transform: uppercase;
+}
+.links-container div {
+  display: inline-block;
+  list-style: outside none none;
+  margin: 0.5em 0.6em;
+  padding: 12px 15px;
+  position: relative;
+}
+.links-container div a {
+  color: #fff;
+  text-decoration: none;
+}
+.links-container div:before,
+.links-container div:after {
+  -webkit-transition: all 0.35s ease;
+  transition: all 0.35s ease;
+  height: 2px;
+  width: 35%;
+  background-color: #528cb3;
+  position: absolute;
+  content: '';
+  opacity: 0;
+}
+.links-container div:before {
+  top: 0;
+  left: 0;
+}
+.links-container div:after {
+  bottom: 0;
+  right: 0;
+}
+.links-container div:hover:before,
+.links-container div.hover:before,
+.links-container div:hover:after,
+.links-container div.hover:after {
+  opacity: 1;
+}
+.links-container div:hover:before,
+.links-container div.hover:before {
+  left: 65%;
+}
+.links-container div:hover:after,
+.links-container div.hover:after {
+  right: 65%;
+}
+

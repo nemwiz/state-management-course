@@ -1,11 +1,12 @@
+@import url(https://fonts.googleapis.com/css?family=Muli);
+
 .main-container {
   display: grid;
   grid-template-columns: 1fr 8fr;
   height: 95vh;
 }
 
-.main-container app-sidebar-navigation {
-  background-color: #35383b;
-  color: white;
+.main-container sidebar-navigation {
+  background-color: #282b2e;
 }
 

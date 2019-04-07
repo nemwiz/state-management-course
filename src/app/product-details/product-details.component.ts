@@ -4,7 +4,7 @@ import {ActivatedRoute} from '@angular/router';
 import {ProductService} from '../services/product.service';
 
 @Component({
-  selector: 'app-product-details',
+  selector: 'product-details',
   templateUrl: './product-details.component.html',
   styleUrls: ['./product-details.component.css']
 })
@@ -22,4 +22,7 @@ export class ProductDetailsComponent implements OnInit {
     });
   }
 
+  addToCart() {
+    // TODO - implement logic for cart state
+  }
 }

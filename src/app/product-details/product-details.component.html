@@ -1,3 +1,11 @@
-<p *ngIf="product">
-  {{product.name}}
-</p>
+<figure class="product-detail">
+  <figcaption>
+    <blockquote>
+      <p>{{product.description}}</p>
+    </blockquote>
+    <h3>{{product.name}} {{product.type}}</h3>
+    <h4>{{product.price}}$</h4>
+  </figcaption>
+  <button class="add-to-cart-button"
+          (click)="addToCart()">Add {{product.name}} to cart</button>
+</figure>

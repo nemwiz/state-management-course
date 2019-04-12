@@ -1,3 +1,9 @@
+
+:host {
+  font-size: 1.45em;
+  font-family: 'Muli', Arial, sans-serif;
+}
+
 header {
   display: flex;
   align-items: center;
@@ -11,8 +17,6 @@ header {
   flex-grow: 1;
   justify-content: flex-end;
   color: #ffffff;
-  font-size: 1.45em;
-  font-family: 'Muli', Arial, sans-serif;
 }
 
 .icons-container {

@@ -9,6 +9,7 @@ import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { SidebarNavigationComponent } from './sidebar-navigation/sidebar-navigation.component';
 import {ProductService} from './services/product.service';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
+import { BreadcrumbComponent } from './header-bar/breadcrumb/breadcrumb.component';
 
 
 const routes: Routes = [
@@ -26,7 +27,8 @@ const routes: Routes = [
     ProductsComponent,
     ProductComponent,
     ProductDetailsComponent,
-    ShoppingCartComponent
+    ShoppingCartComponent,
+    BreadcrumbComponent
   ],
   imports: [
     BrowserModule,

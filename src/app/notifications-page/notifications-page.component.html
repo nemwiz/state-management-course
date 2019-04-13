@@ -5,7 +5,7 @@
            alt="notification-type"/>
     </div>
     <div class="notification-message">{{getNotificationMessage(notification.type)}}</div>
-    <div class="notification-mark-as-read">
+    <div class="notification-mark-as-read" (click)="markAsRead(notification.id)">
       <img src="../../assets/success.svg" class="notification-type-icon" alt="notification-type"/>
       <div>Mark as read</div>
     </div>

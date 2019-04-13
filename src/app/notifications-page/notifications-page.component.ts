@@ -14,17 +14,21 @@ enum NotificationType {
 export class NotificationsPageComponent implements OnInit {
 
   dummyNotifications = [
-    {type: NotificationType.MESSAGE},
-    {type: NotificationType.SETTINGS},
-    {type: NotificationType.PRODUCT},
-    {type: NotificationType.PRODUCT},
-    {type: NotificationType.MESSAGE},
+    {id: 1, type: NotificationType.MESSAGE},
+    {id: 2, type: NotificationType.SETTINGS},
+    {id: 3, type: NotificationType.PRODUCT},
+    {id: 4, type: NotificationType.PRODUCT},
+    {id: 5, type: NotificationType.MESSAGE},
   ];
 
   constructor() {
   }
 
   ngOnInit() {
+  }
+
+  markAsRead(notificationId: number) {
+    this.dummyNotifications = this.dummyNotifications.filter(notificaion => notificaion.id !== notificationId);
   }
 
   getNotificationIcon(notificationType: NotificationType) {

@@ -1,0 +1,45 @@
+.notification-container {
+  display: flex;
+  flex-direction: column;
+  margin-top: 10px;
+  font-family: 'Muli', Arial, sans-serif;
+}
+
+.notification-container .notification-box + .notification-box {
+  margin-top: 10px;
+}
+
+.notification-box {
+  display: flex;
+  width: 90vh;
+  justify-content: space-between;
+  align-items: center;
+  border: 1px solid black;
+  padding: 20px;
+  background-color: #E0D8FF;
+}
+
+.notification-box:hover {
+  background-color: #C7BCF3;
+}
+
+.notification-type-icon {
+  width: 30px;
+  height: 30px;
+}
+
+.notification-message {
+  font-size: 20px;
+}
+
+.notification-mark-as-read {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-weight: bold;
+
+}
+
+.notification-mark-as-read:hover {
+  cursor: pointer;
+}

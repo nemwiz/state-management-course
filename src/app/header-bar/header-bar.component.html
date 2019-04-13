@@ -8,9 +8,11 @@
         <div class="notifications" *ngIf="shoppingCartItems !== 0">{{shoppingCartItems}}</div>
       </div>
     </a>
-    <div class="icon-and-notification-container">
-      <img class="user-icon" src="../../assets/user-icon.svg" alt="user-icon">
-      <div class="notifications" *ngIf="userNotifications !== 0">{{userNotifications}}</div>
-    </div>
+    <a routerLink="/notifications-page">
+      <div class="icon-and-notification-container">
+        <img class="user-icon" src="../../assets/user-icon.svg" alt="user-icon">
+        <div class="notifications" *ngIf="userNotifications !== 0">{{userNotifications}}</div>
+      </div>
+    </a>
   </div>
 </header>

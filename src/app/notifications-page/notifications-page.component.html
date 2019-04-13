@@ -1,0 +1,13 @@
+<div class="notification-container">
+  <div class="notification-box" *ngFor="let notification of dummyNotifications">
+    <div class="notification-type">
+      <img src="../../assets/{{getNotificationIcon(notification.type)}}" class="notification-type-icon"
+           alt="notification-type"/>
+    </div>
+    <div class="notification-message">{{getNotificationMessage(notification.type)}}</div>
+    <div class="notification-mark-as-read">
+      <img src="../../assets/success.svg" class="notification-type-icon" alt="notification-type"/>
+      <div>Mark as read</div>
+    </div>
+  </div>
+</div>

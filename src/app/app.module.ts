@@ -10,6 +10,7 @@ import { SidebarNavigationComponent } from './sidebar-navigation/sidebar-navigat
 import {ProductService} from './services/product.service';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import { BreadcrumbComponent } from './header-bar/breadcrumb/breadcrumb.component';
+import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
 
 
 const routes: Routes = [
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: '', redirectTo: 'products', pathMatch: 'full' },
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
+  { path: 'notifications-page', component: NotificationsPageComponent },
 ];
 
 @NgModule({
@@ -28,7 +30,8 @@ const routes: Routes = [
     ProductComponent,
     ProductDetailsComponent,
     ShoppingCartComponent,
-    BreadcrumbComponent
+    BreadcrumbComponent,
+    NotificationsPageComponent
   ],
   imports: [
     BrowserModule,

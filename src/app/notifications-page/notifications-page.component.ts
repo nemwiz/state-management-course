@@ -1,9 +1,9 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, Input} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
 
 enum NotificationType {
-  MESSAGE,
-  SETTINGS,
-  PRODUCT
+  MESSAGE = 0,
+  PRODUCT = 1
 }
 
 @Component({
@@ -13,18 +13,22 @@ enum NotificationType {
 })
 export class NotificationsPageComponent implements OnInit {
 
+  @Input() typeOfNotification: number = 1;
+
   dummyNotifications = [
     {id: 1, type: NotificationType.MESSAGE},
-    {id: 2, type: NotificationType.SETTINGS},
     {id: 3, type: NotificationType.PRODUCT},
     {id: 4, type: NotificationType.PRODUCT},
     {id: 5, type: NotificationType.MESSAGE},
   ];
 
-  constructor() {
+  constructor(private route: ActivatedRoute) {
   }
 
-  ngOnInit() {
+  ngOnInit(){
+    this.route.paramMap.subscribe(params =>
+        this.typeOfNotification = parseInt(params.get('typeOfNotification'))
+    )
   }
 
   markAsRead(notificationId: number) {
@@ -37,8 +41,6 @@ export class NotificationsPageComponent implements OnInit {
         return 'envelope.svg';
       case NotificationType.PRODUCT:
         return 'file.svg';
-      case NotificationType.SETTINGS:
-        return 'settings.svg';
       default:
         return 'envelope.svg';
     }
@@ -49,12 +51,16 @@ export class NotificationsPageComponent implements OnInit {
       case NotificationType.MESSAGE:
         return 'Your products have been shipped. Thank you for buying at the tech store.';
       case NotificationType.PRODUCT:
-        return 'Hey there! A new JS framework is just out. Check it out on the products page!';
-      case NotificationType.SETTINGS:
-        return 'Something went wrong with your user settings. Please fill in the correct address.';
+        return 'Hey there! A new JS framework is just out. Check it out on the products page!';   
       default:
         return '';
     }
+  }
+
+  get dummyNotificationsData() {
+    return this.typeOfNotification === NotificationType.MESSAGE ?
+      this.dummyNotifications.filter(n => n.type === NotificationType.MESSAGE) :
+      this.dummyNotifications.filter(n => n.type === NotificationType.PRODUCT)
   }
 
 }

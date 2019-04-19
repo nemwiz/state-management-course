@@ -1,10 +1,14 @@
 <div class="sidebar-container">
   <div class="links-container">
-    <div class="current"><a href="#" data-hover="Home">Home</a></div>
-    <div><a href="#" data-hover="About Us">About Us</a></div>
-    <div><a href="#" data-hover="Blog">Blog</a></div>
-    <div><a href="#" data-hover="Services">Services</a></div>
-    <div><a href="#" data-hover="Products">Products</a></div>
-    <div><a href="#" data-hover="Contact">Contact</a></div>
+    <div class="current">
+      <a [routerLink]="['/products', {showNotifications: false}]" data-hover="Home">Home</a></div>
+    <div>
+      <a [routerLink]="['/products', {showNotifications: true}]" href="#" data-hover="Products">Products</a>
+      <span class="notifications">5</span>
+    </div>
+    <div>
+      <a [routerLink]="['/notifications-page', {typeOfNotification: 0}]" data-hover="Contact">Messages</a>
+      <span class="notifications">2</span>
+    </div>
   </div>
 </div>

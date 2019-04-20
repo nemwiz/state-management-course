@@ -11,6 +11,8 @@ import {ProductService} from './services/product.service';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import { BreadcrumbComponent } from './header-bar/breadcrumb/breadcrumb.component';
 import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
+import {StoreModule} from '@ngrx/store';
+import {productsReducer} from './reducers/products.reducer';
 
 
 const routes: Routes = [
@@ -35,7 +37,8 @@ const routes: Routes = [
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    StoreModule.forRoot({ products: productsReducer }),
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

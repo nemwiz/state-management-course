@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {select, Store} from '@ngrx/store';
+import {ShoppingCartStore} from '../reducers/shopping-cart.store';
 
 @Component({
   selector: 'header-bar',
@@ -10,10 +12,17 @@ export class HeaderBarComponent implements OnInit {
   userNotifications = 1;
   shoppingCartItems: number;
 
-  constructor() { }
+  constructor(private store: Store<{ shoppingCart: ShoppingCartStore }>) {
+    store
+      .pipe(select('shoppingCart'))
+      .subscribe(state => {
+        this.shoppingCartItems = state.aggregatedProducts
+          .map(product => product.qty)
+          .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
+      });
+  }
 
   ngOnInit() {
-    this.shoppingCartItems = 3;
     setInterval(() => {
       this.userNotifications++;
     }, 3000);

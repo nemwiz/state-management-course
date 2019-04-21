@@ -1,4 +1,4 @@
-<div class="products-in-cart">
+<div class="products-in-cart" *ngIf="products.length !== 0">
   <table class="table-fill">
     <thead>
     <tr>
@@ -8,19 +8,17 @@
     </tr>
     </thead>
     <tbody class="table-hover">
-    <tr>
-      <td class="text-left">ImmutableJS</td>
-      <td class="text-left">3</td>
-      <td class="text-left">99.99$</td>
-    </tr>
-    <tr>
-      <td class="text-left">Angular</td>
-      <td class="text-left">1</td>
-      <td class="text-left">299.99$</td>
+    <tr *ngFor="let product of products">
+      <td class="text-left">{{product.name}}</td>
+      <td class="text-left">{{product.qty}}</td>
+      <td class="text-left">{{product.price}}</td>
     </tr>
     </tbody>
   </table>
 </div>
 
 
-<div class="total-price">Total price is 192$</div>
+<div class="total-price" *ngIf="products.length !== 0">Total price is {{totalPrice}}$</div>
+
+
+<div class="no-products-message" *ngIf="products.length === 0">There are no products in your shopping cart. Go buy some!!! :)</div>

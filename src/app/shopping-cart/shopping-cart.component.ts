@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
-import {Product} from '../models/product';
+import {AggregatedProduct, ShoppingCartStore} from '../reducers/shopping-cart.store';
 
 @Component({
   selector: 'shopping-cart',
@@ -9,16 +9,18 @@ import {Product} from '../models/product';
 })
 export class ShoppingCartComponent implements OnInit {
 
-  products: Product[];
+  products: AggregatedProduct[];
+  totalPrice: number;
 
-  constructor(private store: Store<{ products: Product[] }>) {
-     store.pipe(select('products'))
-      .subscribe(products => {
-        this.products = products;
+  constructor(private store: Store<{ shoppingCart: ShoppingCartStore }>) {
+    store
+      .pipe(select('shoppingCart'))
+      .subscribe(state => {
+        this.products = state.aggregatedProducts;
+        this.totalPrice = state.totalPrice;
       });
   }
 
   ngOnInit() {
   }
-
 }

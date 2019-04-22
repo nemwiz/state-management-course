@@ -4,11 +4,11 @@
       <a [routerLink]="['/products', {showNotifications: false}]" data-hover="Home">Home</a></div>
     <div>
       <a [routerLink]="['/products', {showNotifications: true}]" href="#" data-hover="Products">Products</a>
-      <span class="notifications">5</span>
+      <span class="notifications">{{productNotifications}}</span>
     </div>
     <div>
       <a [routerLink]="['/notifications-page', {typeOfNotification: 0}]" data-hover="Contact">Messages</a>
-      <span class="notifications">2</span>
+      <span class="notifications">{{messageNotifications}}</span>
     </div>
   </div>
 </div>

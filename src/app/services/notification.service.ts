@@ -18,4 +18,11 @@ export class NotificationService {
     return notifications.filter(n => n.type === NotificationType.MESSAGE).length;
   }
 
+  removeNotification(notificationId: number) {
+    const index = notifications.indexOf(notifications.find(n => n.id === notificationId));
+    if (index > -1) {
+        notifications.splice(index, 1);
+    }
+  }
+
 }

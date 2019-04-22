@@ -1,5 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { notifications } from '../services/notifications';
+import { NotificationService } from '../services/notification.service';
 
 enum NotificationType {
   MESSAGE = 0,
@@ -15,14 +17,7 @@ export class NotificationsPageComponent implements OnInit {
 
   @Input() typeOfNotification: number = 1;
 
-  dummyNotifications = [
-    {id: 1, type: NotificationType.MESSAGE},
-    {id: 3, type: NotificationType.PRODUCT},
-    {id: 4, type: NotificationType.PRODUCT},
-    {id: 5, type: NotificationType.MESSAGE},
-  ];
-
-  constructor(private route: ActivatedRoute) {
+  constructor(private route: ActivatedRoute, private notificationService: NotificationService) {
   }
 
   ngOnInit(){
@@ -32,7 +27,7 @@ export class NotificationsPageComponent implements OnInit {
   }
 
   markAsRead(notificationId: number) {
-    this.dummyNotifications = this.dummyNotifications.filter(notificaion => notificaion.id !== notificationId);
+    this.notificationService.removeNotification(notificationId);
   }
 
   getNotificationIcon(notificationType: NotificationType) {
@@ -59,8 +54,8 @@ export class NotificationsPageComponent implements OnInit {
 
   get dummyNotificationsData() {
     return this.typeOfNotification === NotificationType.MESSAGE ?
-      this.dummyNotifications.filter(n => n.type === NotificationType.MESSAGE) :
-      this.dummyNotifications.filter(n => n.type === NotificationType.PRODUCT)
+      notifications.filter(n => n.type === NotificationType.MESSAGE) :
+      notifications.filter(n => n.type === NotificationType.PRODUCT)
   }
 
 }

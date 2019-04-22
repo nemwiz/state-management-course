@@ -3,7 +3,7 @@
     <div class="current">
       <a [routerLink]="['/products', {showNotifications: false}]" data-hover="Home">Home</a></div>
     <div>
-      <a [routerLink]="['/products', {showNotifications: true}]" href="#" data-hover="Products">Products</a>
+      <a [routerLink]="['/products', {typeOfNotification: 1, showNotifications: true}]" href="#" data-hover="Products">Products</a>
       <span class="notifications">{{productNotifications}}</span>
     </div>
     <div>

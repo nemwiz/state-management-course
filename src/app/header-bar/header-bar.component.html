@@ -8,7 +8,7 @@
         <span class="notifications" *ngIf="shoppingCartItems !== 0">{{shoppingCartItems}}</span>
       </div>
     </a>
-    <a routerLink="/notifications-page">
+    <a [routerLink]="['/notifications-page', {typeOfNotification: 3}]">
       <div class="icon-and-notification-container">
         <img class="user-icon" src="../../assets/user-icon.svg" alt="user-icon">
         <span class="notifications" *ngIf="userNotifications !== 0">{{allNotifications}}</span>

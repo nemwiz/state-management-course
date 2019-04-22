@@ -2,11 +2,7 @@ import {Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { notifications } from '../services/notifications';
 import { NotificationService } from '../services/notification.service';
-
-enum NotificationType {
-  MESSAGE = 0,
-  PRODUCT = 1
-}
+import { NotificationType } from '../models/notificationType';
 
 @Component({
   selector: 'notifications-page',
@@ -15,7 +11,7 @@ enum NotificationType {
 })
 export class NotificationsPageComponent implements OnInit {
 
-  @Input() typeOfNotification: number = 1;
+  @Input() typeOfNotification: number;
 
   constructor(private route: ActivatedRoute, private notificationService: NotificationService) {
   }
@@ -52,10 +48,12 @@ export class NotificationsPageComponent implements OnInit {
     }
   }
 
-  get dummyNotificationsData() {
-    return this.typeOfNotification === NotificationType.MESSAGE ?
-      notifications.filter(n => n.type === NotificationType.MESSAGE) :
-      notifications.filter(n => n.type === NotificationType.PRODUCT)
+  get notificationsData() {
+    switch(this.typeOfNotification) {
+      case 0: return notifications.filter(n => n.type === NotificationType.MESSAGE);
+      case 1: return notifications.filter(n => n.type === NotificationType.PRODUCT);
+      case 3: return notifications;
+    }
   }
 
 }

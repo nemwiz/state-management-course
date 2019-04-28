@@ -11,14 +11,19 @@ export const shoppingCartReducer = (state: ShoppingCartStore = {aggregatedProduc
 
       if (isProductAlreadyInTheCart(action.payload.product, state.aggregatedProducts)) {
         aggregatedProducts = state.aggregatedProducts.map((product) => {
-          if (product.name === action.payload.product.name) {
+          if (product.id === action.payload.product.id) {
             const qty = product.qty + 1;
             return Object.assign(product, {qty: qty, price: action.payload.product.price * qty});
           }
           return product;
         });
       } else {
-        const newAggregatedProduct = {name: action.payload.product.name, qty: 1, price: action.payload.product.price};
+        const newAggregatedProduct = {
+          id: action.payload.product.id,
+          name: action.payload.product.name,
+          qty: 1,
+          price: action.payload.product.price
+        };
         aggregatedProducts = [...state.aggregatedProducts, newAggregatedProduct];
       }
       return {aggregatedProducts: aggregatedProducts, totalPrice: calculateTotalPrice(aggregatedProducts)};
@@ -30,7 +35,7 @@ export const shoppingCartReducer = (state: ShoppingCartStore = {aggregatedProduc
 
 
 const isProductAlreadyInTheCart = (product: Product, allProducts: AggregatedProduct[]): boolean => {
-  return allProducts.filter(p => p.name === product.name).length !== 0;
+  return allProducts.filter(p => p.id === product.id).length !== 0;
 };
 
 const calculateTotalPrice = (allProducts: AggregatedProduct[]): number => {

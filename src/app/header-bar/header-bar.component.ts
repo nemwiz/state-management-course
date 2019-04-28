@@ -1,5 +1,6 @@
-import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
+import {Component, OnInit} from '@angular/core';
+import {NotificationService} from '../services/notification.service';
+import {ShoppingCartStore} from '../shopping-cart.store';
 
 @Component({
   selector: 'header-bar',
@@ -11,10 +12,17 @@ export class HeaderBarComponent implements OnInit {
   userNotifications = 1;
   shoppingCartItems: number;
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationService: NotificationService,
+              private shoppingCartStore: ShoppingCartStore) {
+  }
 
   ngOnInit() {
-    this.shoppingCartItems = 3;
+  }
+
+  getTotalItems() {
+    this.shoppingCartItems = this.shoppingCartStore.products
+      .map(product => product.qty)
+      .reduce((previousValue, currentValue) => previousValue + currentValue, 0);
   }
 
   get allNotifications() {

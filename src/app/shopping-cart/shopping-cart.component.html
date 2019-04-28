@@ -1,5 +1,5 @@
-<div class="products-in-cart">
-  <table class="table-fill">
+<div *mobxAutorun class="products-in-cart">
+  <table class="table-fill" *ngIf="shoppingCartStore.products.length > 0">
     <thead>
     <tr>
       <th class="text-left">Product name</th>
@@ -8,19 +8,17 @@
     </tr>
     </thead>
     <tbody class="table-hover">
-    <tr>
-      <td class="text-left">ImmutableJS</td>
-      <td class="text-left">3</td>
-      <td class="text-left">99.99$</td>
-    </tr>
-    <tr>
-      <td class="text-left">Angular</td>
-      <td class="text-left">1</td>
-      <td class="text-left">299.99$</td>
+    <tr *ngFor="let product of shoppingCartStore.products">
+      <td class="text-left">{{product.name}}</td>
+      <td class="text-left">{{product.qty}}</td>
+      <td class="text-left">{{product.price}}$</td>
     </tr>
     </tbody>
   </table>
 </div>
 
 
-<div class="total-price">Total price is 192$</div>
+<div class="total-price" *ngIf="shoppingCartStore.products.length > 0">Total price is {{shoppingCartStore.totalPrice}}$</div>
+
+
+<div *ngIf="shoppingCartStore.products.length === 0">No products in your cart. Go buy some!</div>

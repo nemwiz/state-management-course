@@ -1,4 +1,4 @@
-<figure class="product blue">
+<figure *mobxAutorun class="product blue">
   <div (click)="navigateToProductDetails()">
     <img src="{{product.imgUrl}}" alt="product"/>
     <div class="price">{{product.price}}$</div>
@@ -8,6 +8,6 @@
     <p (click)="navigateToProductDetails()">
       {{product.description}}
     </p>
-    <a (click)="addToCart()">Add to Cart</a>
+    <a (click)="addToCart(product)">Add to Cart</a>
   </figcaption>
 </figure>

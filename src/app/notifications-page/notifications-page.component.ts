@@ -1,10 +1,8 @@
-import {Component, OnInit} from '@angular/core';
-
-enum NotificationType {
-  MESSAGE,
-  SETTINGS,
-  PRODUCT
-}
+import {Component, OnInit, Input} from '@angular/core';
+import { ActivatedRoute } from '@angular/router';
+import { notifications } from '../services/notifications';
+import { NotificationService } from '../services/notification.service';
+import { NotificationType } from '../models/notificationType';
 
 @Component({
   selector: 'notifications-page',
@@ -13,22 +11,19 @@ enum NotificationType {
 })
 export class NotificationsPageComponent implements OnInit {
 
-  dummyNotifications = [
-    {id: 1, type: NotificationType.MESSAGE},
-    {id: 2, type: NotificationType.SETTINGS},
-    {id: 3, type: NotificationType.PRODUCT},
-    {id: 4, type: NotificationType.PRODUCT},
-    {id: 5, type: NotificationType.MESSAGE},
-  ];
+  @Input() typeOfNotification: number;
 
-  constructor() {
+  constructor(private route: ActivatedRoute, private notificationService: NotificationService) {
   }
 
-  ngOnInit() {
+  ngOnInit(){
+    this.route.paramMap.subscribe(params =>
+        this.typeOfNotification = parseInt(params.get('typeOfNotification'))
+    )
   }
 
   markAsRead(notificationId: number) {
-    this.dummyNotifications = this.dummyNotifications.filter(notificaion => notificaion.id !== notificationId);
+    this.notificationService.removeNotification(notificationId);
   }
 
   getNotificationIcon(notificationType: NotificationType) {
@@ -37,8 +32,6 @@ export class NotificationsPageComponent implements OnInit {
         return 'envelope.svg';
       case NotificationType.PRODUCT:
         return 'file.svg';
-      case NotificationType.SETTINGS:
-        return 'settings.svg';
       default:
         return 'envelope.svg';
     }
@@ -49,11 +42,17 @@ export class NotificationsPageComponent implements OnInit {
       case NotificationType.MESSAGE:
         return 'Your products have been shipped. Thank you for buying at the tech store.';
       case NotificationType.PRODUCT:
-        return 'Hey there! A new JS framework is just out. Check it out on the products page!';
-      case NotificationType.SETTINGS:
-        return 'Something went wrong with your user settings. Please fill in the correct address.';
+        return 'Hey there! A new JS framework is just out. Check it out on the products page!';   
       default:
         return '';
+    }
+  }
+
+  get notificationsData() {
+    switch(this.typeOfNotification) {
+      case 0: return notifications.filter(n => n.type === NotificationType.MESSAGE);
+      case 1: return notifications.filter(n => n.type === NotificationType.PRODUCT);
+      case 3: return notifications;
     }
   }
 

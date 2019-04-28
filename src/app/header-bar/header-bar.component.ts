@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { NotificationService } from '../services/notification.service';
 import {select, Store} from '@ngrx/store';
 import {ShoppingCartStore} from '../reducers/shopping-cart.store';
+
 
 @Component({
   selector: 'header-bar',
@@ -12,7 +14,8 @@ export class HeaderBarComponent implements OnInit {
   userNotifications = 1;
   shoppingCartItems: number;
 
-  constructor(private store: Store<{ shoppingCart: ShoppingCartStore }>) {
+  constructor(private notificationService: NotificationService,
+              private store: Store<{ shoppingCart: ShoppingCartStore }>) {
     store
       .pipe(select('shoppingCart'))
       .subscribe(state => {
@@ -23,9 +26,9 @@ export class HeaderBarComponent implements OnInit {
   }
 
   ngOnInit() {
-    setInterval(() => {
-      this.userNotifications++;
-    }, 3000);
   }
 
+  get allNotifications() {
+    return this.notificationService.messageNotificationNumber + this.notificationService.productNotificationNumber;
+  }
 }

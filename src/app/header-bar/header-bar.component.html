@@ -5,13 +5,13 @@
     <a routerLink="/shopping-cart">
       <div class="icon-and-notification-container">
         <img class="shopping-cart-icon" src="../../assets/shopping-cart.svg" alt="user-icon">
-        <div class="notifications" *ngIf="shoppingCartItems !== 0">{{shoppingCartItems}}</div>
+        <span class="notifications" *ngIf="shoppingCartItems !== 0">{{shoppingCartItems}}</span>
       </div>
     </a>
-    <a routerLink="/notifications-page">
+    <a [routerLink]="['/notifications-page', {typeOfNotification: 3}]">
       <div class="icon-and-notification-container">
         <img class="user-icon" src="../../assets/user-icon.svg" alt="user-icon">
-        <div class="notifications" *ngIf="userNotifications !== 0">{{userNotifications}}</div>
+        <span class="notifications" *ngIf="userNotifications !== 0">{{allNotifications}}</span>
       </div>
     </a>
   </div>

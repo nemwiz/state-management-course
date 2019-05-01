@@ -14,6 +14,9 @@ import { NotificationsPageComponent } from './notifications-page/notifications-p
 import {StoreModule} from '@ngrx/store';
 import {shoppingCartReducer} from './reducers/shopping-cart-reducer';
 import {productsReducer} from './reducers/products.reducer';
+import {HttpClientModule} from '@angular/common/http';
+import {EffectsModule} from '@ngrx/effects';
+import {ProductsEffect} from './reducers/effects/products.effect';
 
 
 const routes: Routes = [
@@ -37,8 +40,10 @@ const routes: Routes = [
     NotificationsPageComponent
   ],
   imports: [
+    HttpClientModule,
     BrowserModule,
     RouterModule.forRoot(routes),
+    EffectsModule.forRoot([ProductsEffect]),
     StoreModule.forRoot({ shoppingCart: shoppingCartReducer, products: productsReducer }),
   ],
   providers: [ProductService],

@@ -14,7 +14,7 @@ export class ProductComponent implements OnInit {
   @Input() product: Product;
 
   constructor(private router: Router,
-              private store: Store<{ products: Product[] }>) {
+              private store: Store<{}>) {
   }
 
   ngOnInit(): void {

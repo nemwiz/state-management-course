@@ -1,8 +1,8 @@
-import {ActionsUnion, ActionTypes} from './products.action';
+import {ProductActionsUnion, ActionTypes} from './products.action';
 import {AggregatedProduct, ShoppingCartStore} from './shopping-cart.store';
 import {Product} from '../models/product';
 
-export const shoppingCartReducer = (state: ShoppingCartStore = {aggregatedProducts: [], totalPrice: 0.0}, action: ActionsUnion) => {
+export const shoppingCartReducer = (state: ShoppingCartStore = {aggregatedProducts: [], totalPrice: 0.0}, action: ProductActionsUnion) => {
 
   switch (action.type) {
     case ActionTypes.ADD_PRODUCTS_TO_CART:

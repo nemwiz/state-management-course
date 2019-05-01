@@ -13,6 +13,7 @@ import { BreadcrumbComponent } from './header-bar/breadcrumb/breadcrumb.componen
 import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
 import {StoreModule} from '@ngrx/store';
 import {shoppingCartReducer} from './reducers/shopping-cart-reducer';
+import {productsReducer} from './reducers/products.reducer';
 
 
 const routes: Routes = [
@@ -38,7 +39,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     RouterModule.forRoot(routes),
-    StoreModule.forRoot({ shoppingCart: shoppingCartReducer }),
+    StoreModule.forRoot({ shoppingCart: shoppingCartReducer, products: productsReducer }),
   ],
   providers: [ProductService],
   bootstrap: [AppComponent]

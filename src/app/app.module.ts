@@ -11,6 +11,9 @@ import {ProductService} from './services/product.service';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import { BreadcrumbComponent } from './header-bar/breadcrumb/breadcrumb.component';
 import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
+import { PerformanceComponent } from './performance/performance.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import { DummyProductComponent } from './performance/components/dummy-product/dummy-product.component';
 
 
 const routes: Routes = [
@@ -19,6 +22,7 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'notifications-page', component: NotificationsPageComponent },
+  { path: 'performance', component: PerformanceComponent }
 ];
 
 @NgModule({
@@ -31,10 +35,13 @@ const routes: Routes = [
     ProductDetailsComponent,
     ShoppingCartComponent,
     BreadcrumbComponent,
-    NotificationsPageComponent
+    NotificationsPageComponent,
+    PerformanceComponent,
+    DummyProductComponent,
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(routes)
   ],
   providers: [ProductService],

@@ -1,0 +1,8 @@
+<div class="performance-container">
+  <button class="change-product-button" (click)="changeProduct()">Change product with id 5</button>
+
+  <div *ngFor="let product of products">
+    <dummy-product [product]="product"></dummy-product>
+  </div>
+</div>
+

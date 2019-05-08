@@ -12,4 +12,8 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
   }
 
+  deleteProduct() {
+    alert('deleted!');
+  }
+
 }

@@ -3,7 +3,8 @@ import {Product} from '../models/product';
 
 export enum ActionTypes {
   ADD_PRODUCTS_TO_CART = 'ADD_PRODUCTS_TO_CART',
-  ADD_ALL_PRODUCTS = 'ADD_ALL_PRODUCTS'
+  ADD_ALL_PRODUCTS = 'ADD_ALL_PRODUCTS',
+  DELETE_PRODUCT = 'DELETE_PRODUCT'
 }
 
 export class AddProductsToCart implements Action {
@@ -18,5 +19,11 @@ export class AddAllProducts implements Action {
   constructor(public payload: { products: Product[] }) {}
 }
 
+export class DeleteProductAction implements Action {
+  readonly type = ActionTypes.DELETE_PRODUCT;
 
-export type ProductActionsUnion = AddProductsToCart | AddAllProducts;
+  constructor(public id: number) {}
+}
+
+
+export type ProductActionsUnion = AddProductsToCart | AddAllProducts | DeleteProductAction;

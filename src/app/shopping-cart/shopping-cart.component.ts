@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {AggregatedProduct, ShoppingCartStore} from '../reducers/shopping-cart.store';
+import { DeleteProductAction } from '../reducers/products.action';
 
 @Component({
   selector: 'shopping-cart',
@@ -22,5 +23,9 @@ export class ShoppingCartComponent implements OnInit {
   }
 
   ngOnInit() {
+  }
+
+  deleteProduct(id: number) {
+    this.store.dispatch(new DeleteProductAction(id));
   }
 }

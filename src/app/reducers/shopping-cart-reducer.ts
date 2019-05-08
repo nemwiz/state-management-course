@@ -27,6 +27,12 @@ export const shoppingCartReducer = (state: ShoppingCartStore = {aggregatedProduc
         aggregatedProducts = [...state.aggregatedProducts, newAggregatedProduct];
       }
       return {aggregatedProducts: aggregatedProducts, totalPrice: calculateTotalPrice(aggregatedProducts)};
+
+    case ActionTypes.DELETE_PRODUCT:
+      aggregatedProducts = state.aggregatedProducts;
+      const index = aggregatedProducts.findIndex(p => p.id === action.id);
+      aggregatedProducts.splice(index, 1);
+      return {aggregatedProducts: aggregatedProducts, totalPrice: calculateTotalPrice(aggregatedProducts)};;
     default:
       return state;
   }

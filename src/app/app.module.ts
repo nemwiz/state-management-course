@@ -14,6 +14,10 @@ import { NotificationsPageComponent } from './notifications-page/notifications-p
 import { PerformanceComponent } from './performance/performance.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import { DummyProductComponent } from './performance/components/dummy-product/dummy-product.component';
+import { NgrxIntroductionComponent } from './ngrx-introduction/ngrx-introduction.component';
+import { FirstNameComponent } from './shared/first-name/first-name.component';
+import { LastNameComponent } from './shared/last-name/last-name.component';
+import {StoreModule} from '@ngrx/store';
 
 
 const routes: Routes = [
@@ -22,7 +26,8 @@ const routes: Routes = [
   { path: 'products/:id', component: ProductDetailsComponent },
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'notifications-page', component: NotificationsPageComponent },
-  { path: 'performance', component: PerformanceComponent }
+  { path: 'performance', component: PerformanceComponent },
+  { path: 'ngrx-intro', component: NgrxIntroductionComponent }
 ];
 
 @NgModule({
@@ -38,10 +43,14 @@ const routes: Routes = [
     NotificationsPageComponent,
     PerformanceComponent,
     DummyProductComponent,
+    NgrxIntroductionComponent,
+    FirstNameComponent,
+    LastNameComponent
   ],
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    StoreModule.forRoot(null),
     RouterModule.forRoot(routes)
   ],
   providers: [ProductService],

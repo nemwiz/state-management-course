@@ -20,7 +20,11 @@
     "@angular/platform-browser": "^7.2.13",
     "@angular/platform-browser-dynamic": "^7.2.13",
     "@angular/router": "^7.2.13",
+    "@ngrx/effects": "^7.4.0",
+    "@ngrx/store": "^7.4.0",
     "core-js": "^2.5.4",
+    "mobx": "^5.9.4",
+    "mobx-angular": "^3.0.1",
     "rxjs": "^6.0.0",
     "tslib": "^1.9.0",
     "zone.js": "~0.8.26"

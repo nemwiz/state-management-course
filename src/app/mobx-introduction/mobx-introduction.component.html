@@ -1,0 +1,11 @@
+<div *mobxAutorun>
+  <div class="ngrx-intro-container">
+    <div>First name: {{firstName}}</div>
+    <div>Last name: {{lastName}}</div>
+  </div>
+
+  <div class="ngrx-intro-container">
+    <first-name (changeFirstNameClicked)="updateFirstName($event)"></first-name>
+    <last-name (changeLastNameClicked)="updateLastName($event)"></last-name>
+  </div>
+</div>

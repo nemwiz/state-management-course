@@ -19,6 +19,8 @@ import {FirstNameComponent} from './shared/first-name/first-name.component';
 import {LastNameComponent} from './shared/last-name/last-name.component';
 import {MobxIntroductionComponent} from './mobx-introduction/mobx-introduction.component';
 import {MobxAngularModule} from 'mobx-angular';
+import { NotificationsBoxComponent } from './notifications-box/notifications-box.component';
+import { MessagesComponent } from './messages/messages.component';
 
 
 const routes: Routes = [
@@ -28,6 +30,7 @@ const routes: Routes = [
   { path: 'shopping-cart', component: ShoppingCartComponent },
   { path: 'notifications-page', component: NotificationsPageComponent },
   { path: 'performance', component: PerformanceComponent },
+  { path: 'messages', component: MessagesComponent },
   { path: 'ngrx-intro', component: NgrxIntroductionComponent },
   { path: 'mobx-intro', component: MobxIntroductionComponent }
 ];
@@ -48,7 +51,9 @@ const routes: Routes = [
     NgrxIntroductionComponent,
     FirstNameComponent,
     LastNameComponent,
-    MobxIntroductionComponent
+    MobxIntroductionComponent,
+    NotificationsBoxComponent,
+    MessagesComponent
   ],
   imports: [
     BrowserModule,

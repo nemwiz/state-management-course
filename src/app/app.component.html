@@ -3,7 +3,8 @@
 <div class="main-container">
   <sidebar-navigation></sidebar-navigation>
   <div class="content">
-    <router-outlet></router-outlet>
+    <spinner *ngIf="isLoading"></spinner>
+    <router-outlet *ngIf="!isLoading"></router-outlet>
   </div>
 </div>
 

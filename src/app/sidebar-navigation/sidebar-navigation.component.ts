@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
+import { Store } from '@ngrx/store';
+import { Notification } from '../models/notifications';
+import { NotificationType } from '../models/notificationType';
 
 @Component({
   selector: 'sidebar-navigation',
@@ -7,17 +9,20 @@ import { NotificationService } from '../services/notification.service';
   styleUrls: ['./sidebar-navigation.component.css']
 })
 export class SidebarNavigationComponent implements OnInit {
-
-  constructor(private notificationService: NotificationService) { }
+  notifications: Notification[];
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
+    this.store.select('notifications').subscribe( (notifications: Notification[]) => {
+      this.notifications = notifications;
+    });
   }
 
   get productNotifications() {
-    return this.notificationService.productNotificationNumber;
+   return this.notifications.filter(n => n.type === NotificationType.PRODUCT).length;
   }
 
   get messageNotifications() {
-    return this.notificationService.messageNotificationNumber;
+   return this.notifications.filter(n => n.type === NotificationType.MESSAGE).length;
   }
 }

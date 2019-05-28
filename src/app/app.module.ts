@@ -23,6 +23,7 @@ import { NotificationsBoxComponent } from './notifications-box/notifications-box
 import { MessagesComponent } from './messages/messages.component';
 import {StoreModule} from '@ngrx/store';
 import {changeUserReducer} from './store/change-name-reducer';
+import { NotificationReducer } from './store/notification-reducer';
 
 
 const routes: Routes = [
@@ -60,7 +61,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({user: changeUserReducer}),
+    StoreModule.forRoot({user: changeUserReducer, notifications: NotificationReducer}),
     MobxAngularModule,
     RouterModule.forRoot(routes)
   ],

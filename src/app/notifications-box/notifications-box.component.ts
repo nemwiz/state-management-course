@@ -1,8 +1,9 @@
+import { MarkAsRead } from './../store/actions/notification-actions';
 import {Component, Input, OnInit} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
-import {NotificationService} from '../services/notification.service';
 import {NotificationType} from '../models/notificationType';
-import {notifications} from '../services/notifications';
+import { Notification } from '../models/notifications';
+import { Store } from '@ngrx/store';
 
 @Component({
   selector: 'notifications-box',
@@ -10,20 +11,21 @@ import {notifications} from '../services/notifications';
   styleUrls: ['./notifications-box.component.css']
 })
 export class NotificationsBoxComponent implements OnInit {
-
+  notifications: Notification[];
   @Input() typeOfNotification: string;
 
-  constructor(private route: ActivatedRoute, private notificationService: NotificationService) {
+  constructor(private route: ActivatedRoute, private store: Store<any>) {
   }
 
-  ngOnInit(){
-    // this.route.paramMap.subscribe(params =>
-    //   this.typeOfNotification = parseInt(params.get('typeOfNotification'))
-    // )
+  ngOnInit() {
+     this.store.select('notifications').subscribe( (notifications: Notification[]) => {
+       this.notifications = notifications;
+       console.log(notifications);
+     });
   }
 
   markAsRead(notificationId: number) {
-    this.notificationService.removeNotification(notificationId);
+    this.store.dispatch(new MarkAsRead({id: notificationId}));
   }
 
   getNotificationIcon(notificationType: NotificationType) {
@@ -51,11 +53,11 @@ export class NotificationsBoxComponent implements OnInit {
   get notificationsData() {
     switch (this.typeOfNotification) {
       case '0':
-        return notifications.filter(n => n.type === NotificationType.MESSAGE);
+        return this.notifications.filter(n => n.type === NotificationType.MESSAGE);
       case '1':
-        return notifications.filter(n => n.type === NotificationType.PRODUCT);
+        return this.notifications.filter(n => n.type === NotificationType.PRODUCT);
       default:
-        return notifications;
+        return this.notifications;
     }
   }
 

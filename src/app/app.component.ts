@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import { Store } from '@ngrx/store';
+import { InitNotifications } from './store/actions/notification-actions';
+import { notifications } from './services/notifications';
 
 @Component({
   selector: 'app-root',
@@ -8,7 +11,9 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'state-management-course';
 
+  constructor(private store: Store<any>) {
+  }
   ngOnInit(): void {
-    // add all notifications to store
+    this.store.dispatch(new InitNotifications({notifications: notifications}));
   }
 }

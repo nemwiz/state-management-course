@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
+import { Store } from '@ngrx/store';
+import { Notification } from '../models/notifications';
 
 @Component({
   selector: 'header-bar',
@@ -7,17 +8,20 @@ import { NotificationService } from '../services/notification.service';
   styleUrls: ['./header-bar.component.css']
 })
 export class HeaderBarComponent implements OnInit {
-
+  notifications: Notification[];
   userNotifications = 1;
   shoppingCartItems: number;
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private store: Store<any>) { }
 
   ngOnInit() {
     this.shoppingCartItems = 3;
+    this.store.select('notifications').subscribe( (notifications: Notification[]) => {
+      this.notifications = notifications;
+    });
   }
 
   get allNotifications() {
-    return this.notificationService.messageNotificationNumber + this.notificationService.productNotificationNumber;
+    return this.notifications.length;
   }
 }

@@ -1,6 +1,9 @@
+import { AppStore } from '../../models/app-store';
 import {Component, Input, OnInit} from '@angular/core';
 import {Product} from '../../models/product';
 import {Router} from '@angular/router';
+import { Store } from '@ngrx/store';
+import { AddToCart } from 'src/app/store/actions/product-actions';
 
 @Component({
   selector: 'product',
@@ -11,7 +14,7 @@ export class ProductComponent implements OnInit {
 
   @Input() product: Product;
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private store: Store<AppStore>) {
   }
 
   ngOnInit(): void {
@@ -22,6 +25,6 @@ export class ProductComponent implements OnInit {
   }
 
   addToCart() {
-    // TODO - implement logic for cart state
+    this.store.dispatch(new AddToCart({product: this.product}));
   }
 }

@@ -1,3 +1,5 @@
+import { ProductReducer } from './store/product-reducer';
+import { products } from './services/products';
 import {NgModule} from '@angular/core';
 import {BrowserModule} from '@angular/platform-browser';
 import {RouterModule, Routes} from '@angular/router';
@@ -61,7 +63,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    StoreModule.forRoot({user: changeUserReducer, notifications: NotificationReducer}),
+    StoreModule.forRoot({user: changeUserReducer, notifications: NotificationReducer, products: ProductReducer}),
     MobxAngularModule,
     RouterModule.forRoot(routes)
   ],

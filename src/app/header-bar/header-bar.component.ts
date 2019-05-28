@@ -1,3 +1,4 @@
+import { ShopingCartItem } from './../models/shoping-cart-item';
 import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Notification } from '../models/notifications';
@@ -15,9 +16,13 @@ export class HeaderBarComponent implements OnInit {
   constructor(private store: Store<any>) { }
 
   ngOnInit() {
-    this.shoppingCartItems = 3;
     this.store.select('notifications').subscribe( (notifications: Notification[]) => {
       this.notifications = notifications;
+    });
+    this.store.select('products').subscribe( (products: ShopingCartItem[]) => {
+      this.shoppingCartItems = products.map(item => item.quantity).reduce((total, currentValue)=>{
+        return total + currentValue;
+      }, 0);
     });
   }
 

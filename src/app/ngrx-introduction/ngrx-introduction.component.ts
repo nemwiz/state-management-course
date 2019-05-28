@@ -1,4 +1,7 @@
 import {Component, OnInit} from '@angular/core';
+import {Store} from '@ngrx/store';
+import {User} from '../models/user';
+import {ChangeFirstName, ChangeLastName} from '../store/actions/change-user-name';
 
 @Component({
   selector: 'ngrx-introduction',
@@ -7,21 +10,26 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NgrxIntroductionComponent implements OnInit {
 
-  firstName = 'John';
-  lastName = 'Doe';
+  firstName;
+  lastName;
 
 
-  constructor() {
+  constructor(private store: Store<User>) {
+    this.store.select('user')
+      .subscribe((user: User) => {
+        this.firstName = user.firstName;
+        this.lastName = user.lastName;
+      });
   }
 
   ngOnInit() {
   }
 
   updateFirstName(newFirstName: string) {
-    console.log('hello first name');
+    this.store.dispatch(new ChangeFirstName({firstName: newFirstName}));
   }
 
   updateLastName(newLastName: string) {
-    console.log('hello last name');
+    this.store.dispatch(new ChangeLastName({lastName: newLastName}));
   }
 }

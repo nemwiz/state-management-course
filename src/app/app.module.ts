@@ -21,6 +21,8 @@ import {MobxIntroductionComponent} from './mobx-introduction/mobx-introduction.c
 import {MobxAngularModule} from 'mobx-angular';
 import { NotificationsBoxComponent } from './notifications-box/notifications-box.component';
 import { MessagesComponent } from './messages/messages.component';
+import {StoreModule} from '@ngrx/store';
+import {changeUserReducer} from './store/change-name-reducer';
 
 
 const routes: Routes = [
@@ -58,7 +60,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
-    // StoreModule.forRoot(null),
+    StoreModule.forRoot({user: changeUserReducer}),
     MobxAngularModule,
     RouterModule.forRoot(routes)
   ],

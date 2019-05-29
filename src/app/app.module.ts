@@ -7,13 +7,13 @@ import { ProductsComponent } from 'src/app/products/products.component';
 import { AppComponent } from './app.component';
 import { HeaderBarComponent } from './header-bar/header-bar.component';
 import { SidebarNavigationComponent } from './sidebar-navigation/sidebar-navigation.component';
-import {ProductService} from './services/product.service';
 import {ShoppingCartComponent} from './shopping-cart/shopping-cart.component';
 import { BreadcrumbComponent } from './header-bar/breadcrumb/breadcrumb.component';
 import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
 import {MobxAngularModule} from 'mobx-angular';
 import {ShoppingCartStore} from './shopping-cart.store';
 import { NotificationStore } from './stores/notification.store';
+import { ProductStore } from './stores/product.store';
 
 
 const routes: Routes = [
@@ -41,7 +41,7 @@ const routes: Routes = [
     MobxAngularModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService, ShoppingCartStore, NotificationStore],
+  providers: [ShoppingCartStore, NotificationStore, ProductStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

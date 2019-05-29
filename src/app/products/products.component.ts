@@ -1,7 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import {Product} from '../models/product';
-import {ProductService} from '../services/product.service';
 import { ActivatedRoute } from '@angular/router';
+import { ProductStore } from '../stores/product.store';
 
 @Component({
   selector: 'products',
@@ -12,11 +12,11 @@ export class ProductsComponent implements OnInit {
   @Input() showNotifications: boolean;
   products: Product[] = [];
 
-  constructor(private productsService: ProductService, private route: ActivatedRoute) {
+  constructor(private productsStore: ProductStore, private route: ActivatedRoute) {
   }
 
   ngOnInit() {
-    this.products = this.productsService.getProducts();
+    this.products = this.productsStore.allProducts;
     this.route.paramMap.subscribe(params =>
       this.showNotifications = JSON.parse(params.get('showNotifications'))
     )

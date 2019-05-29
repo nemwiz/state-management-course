@@ -21,6 +21,7 @@ import {MobxIntroductionComponent} from './mobx-introduction/mobx-introduction.c
 import {MobxAngularModule} from 'mobx-angular';
 import { NotificationsBoxComponent } from './notifications-box/notifications-box.component';
 import { MessagesComponent } from './messages/messages.component';
+import { SpinnerComponent } from './shared/spinner/spinner.component';
 
 
 const routes: Routes = [
@@ -53,7 +54,8 @@ const routes: Routes = [
     LastNameComponent,
     MobxIntroductionComponent,
     NotificationsBoxComponent,
-    MessagesComponent
+    MessagesComponent,
+    SpinnerComponent
   ],
   imports: [
     BrowserModule,

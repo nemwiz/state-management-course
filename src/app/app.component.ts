@@ -8,6 +8,8 @@ import {Component, OnInit} from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'state-management-course';
 
+  isLoading = false;
+
   ngOnInit(): void {
     // add all notifications to store
   }

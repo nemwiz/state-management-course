@@ -14,4 +14,7 @@ export class ShoppingCartComponent implements OnInit {
   ngOnInit() {
   }
 
+  productsInCart() {
+    return this.shoppingCartStore.products;
+  }
 }

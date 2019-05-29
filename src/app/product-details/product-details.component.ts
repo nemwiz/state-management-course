@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {Product} from '../models/product';
 import {ActivatedRoute} from '@angular/router';
 import { ProductStore } from '../stores/product.store';
+import { ShoppingCartStore } from '../shopping-cart.store';
 
 @Component({
   selector: 'product-details',
@@ -12,7 +13,10 @@ export class ProductDetailsComponent implements OnInit {
 
   product: Product;
 
-  constructor(private route: ActivatedRoute, private productStore: ProductStore) {
+  constructor(
+    private route: ActivatedRoute,
+    private productStore: ProductStore,
+    private shoppingCartStore: ShoppingCartStore) {
   }
 
   ngOnInit() {
@@ -23,6 +27,6 @@ export class ProductDetailsComponent implements OnInit {
   }
 
   addToCart() {
-    // TODO - implement logic for cart state
+    this.shoppingCartStore.addProductToCart(this.product);
   }
 }

@@ -17,6 +17,7 @@ import {productsReducer} from './reducers/products.reducer';
 import {HttpClientModule} from '@angular/common/http';
 import {EffectsModule} from '@ngrx/effects';
 import {ProductsEffect} from './reducers/effects/products.effect';
+import { SpinnerComponent } from './spinner/spinner.component';
 
 
 const routes: Routes = [
@@ -37,7 +38,8 @@ const routes: Routes = [
     ProductDetailsComponent,
     ShoppingCartComponent,
     BreadcrumbComponent,
-    NotificationsPageComponent
+    NotificationsPageComponent,
+    SpinnerComponent
   ],
   imports: [
     HttpClientModule,

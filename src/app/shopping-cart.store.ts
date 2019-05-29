@@ -20,6 +20,13 @@ export class ShoppingCartStore {
       .reduce(((previousValue, currentValue) => previousValue + currentValue), 0);
   }
 
+  @action removeProductFromCart(id: number) {
+    const index = this.products.indexOf(this.products.find(p => p.id === id));
+        if (index > -1) {
+            this.products.splice(index, 1);
+        }
+  }
+
   @action addProductToCart(product: Product) {
     if (isProductAlreadyInTheCart(product, this.products)) {
       const selectedProduct = this.products.find(p => p.id === product.id);

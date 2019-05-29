@@ -17,4 +17,8 @@ export class ShoppingCartComponent implements OnInit {
   productsInCart() {
     return this.shoppingCartStore.products;
   }
+
+  deleteProduct(id: number){
+    this.shoppingCartStore.removeProductFromCart(id);
+  }
 }

@@ -23,6 +23,7 @@ import { NotificationsBoxComponent } from './notifications-box/notifications-box
 import { MessagesComponent } from './messages/messages.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
 import {HttpClientModule} from '@angular/common/http';
+import { ProductStore } from './store/product.store';
 
 
 const routes: Routes = [
@@ -66,7 +67,7 @@ const routes: Routes = [
     MobxAngularModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService],
+  providers: [ProductService, ProductStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

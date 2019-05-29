@@ -1,6 +1,6 @@
 <notifications-box id="demo"  typeOfNotification="1" *ngIf="showNotifications === true" ></notifications-box>
-<div class="products-container">
-  <div *ngFor="let product of products">
+<div *mobxAutorun class="products-container">
+  <div *ngFor="let product of store.products">
     <product [product]="product"></product>
   </div>
 </div>

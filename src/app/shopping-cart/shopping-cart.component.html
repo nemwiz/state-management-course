@@ -1,4 +1,5 @@
-<div class="products-in-cart">
+<div *mobxAutorun>
+<div  class="products-in-cart">
   <table class="table-fill">
     <thead>
     <tr>
@@ -9,28 +10,21 @@
     </tr>
     </thead>
     <tbody class="table-hover">
-    <tr>
-      <td class="text-left">ImmutableJS</td>
-      <td class="text-left">3</td>
-      <td class="text-left">99.99$</td>
+    <tr *ngFor="let product of store.cartItems">
+      <td class="text-left">{{product.product.name}}</td>
+      <td class="text-left">{{product.quantity}}</td>
+      <td class="text-left">{{product.product.price * product.quantity | currency}} </td>
       <td>
          <img class="trash-icon"
               src="../../assets/trash.svg"
               alt="trash-icon"
-              (click)=deleteProduct()>
+              (click)=deleteProduct(product.product.id)>
       </td>
-    </tr>
-    <tr>
-      <td class="text-left">Angular</td>
-      <td class="text-left">1</td>
-      <td class="text-left">299.99$</td>
-      <td>
-          <img class="trash-icon" src="../../assets/trash.svg" alt="trash-icon">
-       </td>
     </tr>
     </tbody>
   </table>
+ </div>
+
+
+ <div *ngIf="store.totalSum > 0" class="total-price">Total price is {{store.totalSum | currency}}$</div>
 </div>
-
-
-<div class="total-price">Total price is 192$</div>

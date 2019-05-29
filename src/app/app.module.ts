@@ -22,6 +22,7 @@ import {MobxAngularModule} from 'mobx-angular';
 import { NotificationsBoxComponent } from './notifications-box/notifications-box.component';
 import { MessagesComponent } from './messages/messages.component';
 import { SpinnerComponent } from './shared/spinner/spinner.component';
+import {HttpClientModule} from '@angular/common/http';
 
 
 const routes: Routes = [
@@ -60,6 +61,7 @@ const routes: Routes = [
   imports: [
     BrowserModule,
     ReactiveFormsModule,
+    HttpClientModule,
     // StoreModule.forRoot(null),
     MobxAngularModule,
     RouterModule.forRoot(routes)

@@ -1,3 +1,4 @@
+import { ProductStore } from './../store/product.store';
 import {Injectable} from '@angular/core';
 import { Router, NavigationEnd } from '@angular/router';
 import { Observable, EMPTY } from 'rxjs';
@@ -7,7 +8,7 @@ import { Observable, EMPTY } from 'rxjs';
 })
 export class BreadCrumbService {
 
-  constructor(private router: Router) {
+  constructor(private router: Router, private store: ProductStore) {
   }
 
   routeChanges(): Observable<string> {
@@ -27,9 +28,13 @@ export class BreadCrumbService {
       if (route === '/products') {
         return 'Products';
       }
+      const productiId = route.substring(route.lastIndexOf('/') + 1);
       // TODO: Map lower level routes
       // TODO: Fetch product name from store to avoid fetching from a service
-      return 'Not mapped';
+      console.log(route);
+      console.log(productiId);
+      console.log(this.store.allProducts);
+      return this.store.allProducts.find(p => p.id.toString() === productiId).name;
   }
 }
 

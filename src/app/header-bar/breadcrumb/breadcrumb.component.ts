@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { BreadCrumbService } from 'src/app/services/breadcrumb.service';
 
 @Component({
@@ -7,7 +7,7 @@ import { BreadCrumbService } from 'src/app/services/breadcrumb.service';
   styleUrls: ['./breadcrumb.component.css']
 })
 export class BreadcrumbComponent implements OnInit {
-  private firstLevel = 'Home';
+  firstLevel = 'Home';
 
   constructor(private breadCrumbService: BreadCrumbService) { }
 
@@ -15,6 +15,8 @@ export class BreadcrumbComponent implements OnInit {
     this.breadCrumbService.routeChanges()
       .subscribe((result) => {
         this.firstLevel = result;
+        console.log(this.firstLevel);
+        console.log(result);
       });
   }
 }

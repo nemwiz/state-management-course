@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {NotificationService} from '../services/notification.service';
 import {ShoppingCartStore} from '../shopping-cart.store';
+import { NotificationStore } from '../stores/notification.store';
 
 @Component({
   selector: 'header-bar',
@@ -12,7 +12,7 @@ export class HeaderBarComponent implements OnInit {
   userNotifications = 1;
   shoppingCartItems: number;
 
-  constructor(private notificationService: NotificationService,
+  constructor(private notificationStore: NotificationStore,
               private shoppingCartStore: ShoppingCartStore) {
   }
 
@@ -26,6 +26,6 @@ export class HeaderBarComponent implements OnInit {
   }
 
   get allNotifications() {
-    return this.notificationService.messageNotificationNumber + this.notificationService.productNotificationNumber;
+    return this.notificationStore.allNotifications.length;
   }
 }

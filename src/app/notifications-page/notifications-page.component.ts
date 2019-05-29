@@ -1,8 +1,7 @@
 import {Component, OnInit, Input} from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { notifications } from '../services/notifications';
-import { NotificationService } from '../services/notification.service';
 import { NotificationType } from '../models/notificationType';
+import { NotificationStore } from '../stores/notification.store';
 
 @Component({
   selector: 'notifications-page',
@@ -13,7 +12,7 @@ export class NotificationsPageComponent implements OnInit {
 
   @Input() typeOfNotification: number;
 
-  constructor(private route: ActivatedRoute, private notificationService: NotificationService) {
+  constructor(private route: ActivatedRoute, private notificationStore: NotificationStore) {
   }
 
   ngOnInit(){
@@ -23,7 +22,7 @@ export class NotificationsPageComponent implements OnInit {
   }
 
   markAsRead(notificationId: number) {
-    this.notificationService.removeNotification(notificationId);
+    this.notificationStore.removeNotification(notificationId);
   }
 
   getNotificationIcon(notificationType: NotificationType) {
@@ -50,9 +49,9 @@ export class NotificationsPageComponent implements OnInit {
 
   get notificationsData() {
     switch(this.typeOfNotification) {
-      case 0: return notifications.filter(n => n.type === NotificationType.MESSAGE);
-      case 1: return notifications.filter(n => n.type === NotificationType.PRODUCT);
-      case 3: return notifications;
+      case 0: return this.notificationStore.messageNotifications;
+      case 1: return this.notificationStore.productNotifications;
+      case 3: return this.notificationStore.allNotifications;
     }
   }
 

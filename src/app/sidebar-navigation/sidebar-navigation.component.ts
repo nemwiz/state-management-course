@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NotificationService } from '../services/notification.service';
+import { NotificationStore } from '../stores/notification.store';
 
 @Component({
   selector: 'sidebar-navigation',
@@ -8,16 +8,16 @@ import { NotificationService } from '../services/notification.service';
 })
 export class SidebarNavigationComponent implements OnInit {
 
-  constructor(private notificationService: NotificationService) { }
+  constructor(private notificationStore: NotificationStore) { }
 
   ngOnInit() {
   }
 
   get productNotifications() {
-    return this.notificationService.productNotificationNumber;
+    return this.notificationStore.productNotifications.length;
   }
 
   get messageNotifications() {
-    return this.notificationService.messageNotificationNumber;
+    return this.notificationStore.messageNotifications.length;
   }
 }

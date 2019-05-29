@@ -13,6 +13,7 @@ import { BreadcrumbComponent } from './header-bar/breadcrumb/breadcrumb.componen
 import { NotificationsPageComponent } from './notifications-page/notifications-page.component';
 import {MobxAngularModule} from 'mobx-angular';
 import {ShoppingCartStore} from './shopping-cart.store';
+import { NotificationStore } from './stores/notification.store';
 
 
 const routes: Routes = [
@@ -40,7 +41,7 @@ const routes: Routes = [
     MobxAngularModule,
     RouterModule.forRoot(routes)
   ],
-  providers: [ProductService, ShoppingCartStore],
+  providers: [ProductService, ShoppingCartStore, NotificationStore],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
